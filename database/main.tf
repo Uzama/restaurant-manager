@@ -1,10 +1,9 @@
 provider "aws" {
-  alias   = "database"
-  region  = var.region
+  alias = "useast"
 }
 
 resource "aws_rds_cluster" "cluster" {
-  provider = aws.database
+  provider = aws.useast
 
   cluster_identifier      = var.cluster_name
   engine_mode             = "serverless"
