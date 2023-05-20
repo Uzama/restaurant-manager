@@ -19,10 +19,4 @@ resource "aws_iam_role" "appsync-role" {
 }
 EOF
 
-
-  tags = {
-    DeployID     = var.deploy_id
-    component    = var.component
-    ComponentTag = var.revision
-  }
 }
