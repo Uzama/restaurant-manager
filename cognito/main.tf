@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"  # Replace with your desired region
+  region = var.region  # Replace with your desired region
 }
 
 resource "aws_cognito_user_pool" "pool" {
@@ -44,10 +44,6 @@ resource "aws_cognito_user_pool" "pool" {
     require_symbols   = false
     require_uppercase = true
   }
-
-#   lambda_config {
-#     pre_sign_up = var.auto_confirm_user_lambda
-#   }
 
   tags = {
     Name = var.name
