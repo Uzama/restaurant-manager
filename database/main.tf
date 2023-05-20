@@ -25,3 +25,24 @@ resource "aws_rds_cluster" "cluster" {
     ignore_changes = [engine_version]
   }
 }
+
+resource "null_resource" "db_setup" {
+
+  triggers = {
+    file = filesha1("database/database.sql")
+  }
+  provisioner "local-exec" {
+    command = <<-EOF
+			while read line; do
+				echo "$line"
+				aws rds-data execute-statement --region "us-east-1" --resource-arn "$DB_ARN" --database  "$DB_NAME" --secret-arn "$SECRET_ARN" --sql "$line"
+			done  < <(awk 'BEGIN{RS=";\n"}{gsub(/\n/,""); if(NF>0) {print $0";"}}' database/database.sql)
+			EOF
+    environment = {
+      DB_ARN     = aws_rds_cluster.cluster.arn
+      DB_NAME    = aws_rds_cluster.cluster.database_name
+      SECRET_ARN = aws_secretsmanager_secret.restaurant.arn
+    }
+    interpreter = ["bash", "-c"]
+  }
+}
