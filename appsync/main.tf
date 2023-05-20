@@ -1,10 +1,10 @@
 provider "aws" {
-  alias   = "appsync"
-  region  = var.region
+  alias = "useast"
 }
 
 resource "aws_appsync_graphql_api" "appsync_api" {
-  provider            = aws.appsync
+  provider = aws.useast
+
   authentication_type = var.auth_type
   name                = var.appsync_name
 
@@ -12,7 +12,11 @@ resource "aws_appsync_graphql_api" "appsync_api" {
     authentication_type = "API_KEY"
   }
 
-  schema = data.local_file.appsync_schema.content
+  user_pool_config {
+    aws_region     = var.region
+    default_action = "ALLOW"
+    user_pool_id   = var.user_pool
+  }
 
-  xray_enabled = true
+  schema = data.local_file.appsync_schema.content
 }

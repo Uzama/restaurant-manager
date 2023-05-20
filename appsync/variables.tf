@@ -19,6 +19,11 @@ variable "rds_database_region" {
   description = "Aurora RDS database region"
 }
 
+variable "user_pool" {
+  description = "Cognito user pool id to connect"
+  default     = "no-userpool"
+}
+
 variable "rds_cluster_arn" {
   type        = string
   default     = "no-arn"
