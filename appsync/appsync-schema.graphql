@@ -5,11 +5,14 @@ schema {
 
 type Query {
     getMenue(restaurantUsername:String!):[MenueItems]
+    listRestaurant():[Restaurant!]
 }
 
 type Mutation {
     addMenueItem(input: AddMenueItem!): ID!
     deleteMenueItem(id:ID!): ID!
+    createRestaurant(input: CreateRestaurant!): String!
+    deleteRestaurant(restaurantUsername:String!): String
 }
 
 type MenueItems {
@@ -24,4 +27,20 @@ input AddMenueItem {
     name: String!
     description: String
     price: Int!
+}
+
+type Restaurant {
+    username: String!
+    email: String!
+    name: String!
+    address: String
+    phone: String
+}
+
+input CreateRestaurant {
+    email: String!
+    password: String!
+    name: String!
+    address: String
+    phone: String
 }
