@@ -45,3 +45,8 @@ resource "aws_iam_role_policy_attachment" "appsync-rds-policy-attachment" {
   role       = aws_iam_role.appsync-role.name
   policy_arn = aws_iam_policy.appsync-access-rds.arn
 }
+
+resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
+  role       = aws_iam_role.lambda-role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}

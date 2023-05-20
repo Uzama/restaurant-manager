@@ -33,6 +33,19 @@ module "cognito" {
   # }
 }
 
+module "lambda" {
+  source = "./lambda"
+
+  lambda_role = module.iam.lambda-role-arn
+  cognito_client_id = module.cognito.client_id
+  cognito_user_pool_id = module.cognito.user_pool_id
+
+  # providers = {
+  #   aws = aws
+  #   aws.useast = aws.useast
+  # }
+}
+
 module "appsync" {
   source = "./appsync"
 
