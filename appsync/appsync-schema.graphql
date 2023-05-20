@@ -1,3 +1,17 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    getMenue(restaurantID:ID!):[MenueItems]
+}
+
+type Mutation {
+    addMenueItem(input: AddMenueItem!): ID!
+    deleteMenueItem(id:ID!): ID!
+}
+
 type MenueItems {
     id: id
     name: String!
@@ -5,18 +19,9 @@ type MenueItems {
     price: Int!
 }
 
-type Query {
-    getMenue(restaurantID:ID!):[MenueItems]
-}
-
 input AddMenueItem {
     restaurantID: ID!
     name: String!
     description: String
     price: Int!
-}
-
-type Mutation {
-    addMenueItem(input: AddMenueItem!): ID!
-    deleteMenueItem(id:ID!): ID!
 }
