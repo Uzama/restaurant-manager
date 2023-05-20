@@ -3,6 +3,11 @@ variable "region" {
   default     = "eu-west-1"
 }
 
+variable "appsync_role" {
+  description = "AWS IAM Role ARN for appsync"
+  default     = ""
+}
+
 variable "auth_type" {
   description = "AppSync Auth type"
   default     = "AMAZON_COGNITO_USER_POOLS"

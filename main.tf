@@ -6,6 +6,15 @@ provider "aws" {
   region = "us-east-1"
 }
 
+module "iam" {
+  source = "../modules/iam"
+
+  providers = {
+    aws = aws
+    aws.useast = aws.useast
+  }
+}
+
 module "database" {
   source = "./database"
 
@@ -36,6 +45,7 @@ module "appsync" {
   rds_cluster_arn    = module.database.cluster_arn
   rds_database_name  = module.database.database_name
   rds_secret         = module.database.rds_secret
+  appsync_role       = module.iam.appsync-role-arn
 
   providers = {
     aws = aws
