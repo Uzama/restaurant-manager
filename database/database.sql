@@ -30,7 +30,6 @@ CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT,
   restaurant_id INT NOT NULL,
   customer_name VARCHAR(255) NOT NULL,
-  customer_email VARCHAR(255) NOT NULL,
   customer_phone VARCHAR(20) NOT NULL,
   status ENUM('received', 'preparing', 'out_for_delivery', 'delivered') NOT NULL,
   order_date DATETIME NOT NULL,
@@ -46,18 +45,6 @@ CREATE TABLE order_items (
   PRIMARY KEY (id),
   FOREIGN KEY (order_id) REFERENCES orders(id),
   FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)
-);
-
-CREATE TABLE staff (
-  id INT NOT NULL AUTO_INCREMENT,
-  restaurant_id INT NOT NULL,
-  name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  phone VARCHAR(20) NOT NULL,
-  position ENUM('manager', 'waiter', 'cook') NOT NULL,
-  salary DECIMAL(10,2) NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
 );
 
 CREATE TABLE invoices (
