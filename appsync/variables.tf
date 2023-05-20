@@ -29,6 +29,11 @@ variable "user_pool" {
   default     = "no-userpool"
 }
 
+variable "client" {
+  description = "Cognito user pool id to connect"
+  default     = "no-client"
+}
+
 variable "rds_cluster_arn" {
   type        = string
   default     = "no-arn"

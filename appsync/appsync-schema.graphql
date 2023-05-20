@@ -5,7 +5,7 @@ schema {
 
 type Query {
     getMenue(restaurantUsername:String!):[MenueItems]
-    listRestaurant():[Restaurant!]
+    listRestaurant:[Restaurant!]
 }
 
 type Mutation {

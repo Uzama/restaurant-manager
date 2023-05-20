@@ -1,0 +1,31 @@
+## Create a Cognito user
+#set($userPoolId = $ctx.arguments.userPoolId)
+#set($clientId = $ctx.arguments.clientId)
+#set($name = $ctx.arguments.name)
+#set($address = $ctx.arguments.address)
+#set($phone = $ctx.arguments.name)
+
+#set($payload = {
+  "UserPoolId": $userPoolId,
+  "ClientId": $clientId,
+  "Username": $ctx.arguments.username,
+  "TemporaryPassword": $ctx.arguments.password,
+  "MessageAction": "SUPPRESS"
+})
+
+#set($result = $util.run("aws-sdk", "CognitoIdentityServiceProvider", "adminCreateUser", $payload))
+
+#if($result)
+  #set($userId = $result.UserId)
+  {
+    "version": "2018-05-29",
+    "statements": [
+        "INSERT INTO restaurant.restaurants (username, name, address, phone) VALUES ('$userId','$name', '$address', '$phone')",
+        "SELECT username FROM restaurant.menu_items where username = '$userId'"
+    ]
+  }
+
+#else
+  $util.error("Failed to create")
+
+
