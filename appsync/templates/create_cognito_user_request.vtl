@@ -1,0 +1,12 @@
+#set($data = {
+    "action": "CREATE",
+    "email": $ctx.args.input.email,
+    "password": $ctx.args.input.password,
+    "name": $ctx.args.input.name,
+    "address": $ctx.args.input.address,
+    "phone": $ctx.args.input.phone,
+})
+{
+  "operation": "Invoke",
+  "payload": $util.toJson($data)
+}
