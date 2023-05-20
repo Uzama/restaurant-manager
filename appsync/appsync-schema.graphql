@@ -4,7 +4,7 @@ schema {
 }
 
 type Query {
-    getMenue(restaurantID:ID!):[MenueItems]
+    getMenue(restaurantUsername:String!):[MenueItems]
 }
 
 type Mutation {
@@ -20,7 +20,7 @@ type MenueItems {
 }
 
 input AddMenueItem {
-    restaurantID: ID!
+    restaurantUsername: String!
     name: String!
     description: String
     price: Int!

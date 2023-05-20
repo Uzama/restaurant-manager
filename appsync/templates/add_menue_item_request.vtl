@@ -14,7 +14,7 @@
 {
     "version": "2018-05-29",
     "statements": [
-        "INSERT INTO restaurant.menu_items (id, restaurant_id, name, description, price) VALUES ('$process_id','$context.args.input.restaurantID', '$context.args.input.name', '$context.args.input.description', '$context.args.input.price')",
+        "INSERT INTO restaurant.menu_items (id, restaurant_username, name, description, price) VALUES ('$process_id','$context.args.input.restaurantUsername', '$context.args.input.name', '$context.args.input.description', '$context.args.input.price')",
         "SELECT id FROM restaurant.menu_items where id = '$process_id'"
     ]
 }
