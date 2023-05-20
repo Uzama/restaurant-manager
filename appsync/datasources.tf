@@ -15,7 +15,7 @@ resource "null_resource" "appsync_rds_datasource" {
   }
 }
 
-resource "aws_appsync_datasource" "media_create_customer" {
+resource "aws_appsync_datasource" "cognito_user_lambda" {
   provider = aws.useast
 
   api_id   = aws_appsync_graphql_api.appsync_api.id
