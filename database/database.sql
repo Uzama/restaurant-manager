@@ -1,3 +1,4 @@
+DROP TABLE users;
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(255) NOT NULL,
@@ -6,6 +7,7 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
+DROP TABLE restaurants;
 CREATE TABLE restaurants (
   id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(255) NOT NULL,
@@ -16,8 +18,9 @@ CREATE TABLE restaurants (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+DROP TABLE menu_items;
 CREATE TABLE menu_items (
-  id INT NOT NULL AUTO_INCREMENT,
+  id VARCHAR(255) NOT NULL,
   restaurant_id INT NOT NULL,
   name VARCHAR(255) NOT NULL,
   description VARCHAR(255),
@@ -26,8 +29,9 @@ CREATE TABLE menu_items (
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
 );
 
+DROP TABLE orders;
 CREATE TABLE orders (
-  id INT NOT NULL AUTO_INCREMENT,
+  id VARCHAR(255) NOT NULL,
   restaurant_id INT NOT NULL,
   customer_name VARCHAR(255) NOT NULL,
   customer_phone VARCHAR(20) NOT NULL,
@@ -37,8 +41,9 @@ CREATE TABLE orders (
   FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
 );
 
+DROP TABLE order_items;
 CREATE TABLE order_items (
-  id INT NOT NULL AUTO_INCREMENT,
+  id VARCHAR(255) NOT NULL,
   order_id INT NOT NULL,
   menu_item_id INT NOT NULL,
   quantity INT NOT NULL,
@@ -47,8 +52,9 @@ CREATE TABLE order_items (
   FOREIGN KEY (menu_item_id) REFERENCES menu_items(id)
 );
 
+DROP TABLE invoices;
 CREATE TABLE invoices (
-  id INT NOT NULL AUTO_INCREMENT,
+  id VARCHAR(255) NOT NULL,
   order_id INT NOT NULL,
   amount DECIMAL(10,2) NOT NULL,
   payment_date DATETIME NOT NULL,
