@@ -51,3 +51,9 @@ variable "rds_secret" {
   default     = "no-arn"
   description = "ARN from secret store to allow RDS Datasource to connect"
 }
+
+variable "cognito_user_lambda" {
+  type        = string
+  default     = "no-arn"
+  description = "CognitoUser Lambda ARN"
+}

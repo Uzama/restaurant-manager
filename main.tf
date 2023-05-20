@@ -55,6 +55,7 @@ module "appsync" {
   auth_type              = "AMAZON_COGNITO_USER_POOLS"
   user_pool              = module.cognito.user_pool_id
   client                 = module.cognito.client_id
+  cognito_user_lambda    = lambda.cognito_user["arn"]
 
   rds_cluster_arn    = module.database.cluster_arn
   rds_database_name  = module.database.database_name
