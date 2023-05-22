@@ -10,7 +10,7 @@ type Query {
 
 type Mutation {
     addMenueItem(input: AddMenueItem!): MenueItem
-    deleteMenueItem(id:ID!): ID
+    deleteMenueItem(id:String!): String
     createRestaurant(input: CreateRestaurant!): Restaurant
     deleteRestaurant(restaurantUsername:String!): String
 }
