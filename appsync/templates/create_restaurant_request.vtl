@@ -6,7 +6,7 @@
     "version": "2018-05-29",
     "statements": [
         "INSERT INTO restaurant.restaurants (username, name, address, phone) VALUES ('$username', '$context.args.input.name', '$address', '$phone')",
-        "SELECT username FROM restaurant.restaurants where username = '$username'"
+        "SELECT username, name, address, phone  FROM restaurant.restaurants where username = '$username'"
     ]
 }
 

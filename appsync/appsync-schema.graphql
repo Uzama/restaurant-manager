@@ -4,18 +4,18 @@ schema {
 }
 
 type Query {
-    getMenue(restaurantUsername:String!):[MenueItems]
+    getMenue(restaurantUsername:String!):[MenueItem]
     listRestaurant:[Restaurant!]
 }
 
 type Mutation {
-    addMenueItem(input: AddMenueItem!): String
+    addMenueItem(input: AddMenueItem!): MenueItem
     deleteMenueItem(id:ID!): ID
-    createRestaurant(input: CreateRestaurant!): String
+    createRestaurant(input: CreateRestaurant!): Restaurant
     deleteRestaurant(restaurantUsername:String!): String
 }
 
-type MenueItems {
+type MenueItem {
     id: ID
     name: String!
     description: String
@@ -31,7 +31,6 @@ input AddMenueItem {
 
 type Restaurant {
     username: String!
-    email: String!
     name: String!
     address: String
     phone: String
