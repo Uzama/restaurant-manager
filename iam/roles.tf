@@ -1,5 +1,10 @@
-# Needed for appsync logging.
+provider "aws" {
+  alias = "useast"
+}
+
 resource "aws_iam_role" "appsync-role" {
+  provider = aws.useast
+
   name        = "restaurant-manager-appsync"
   description = "IAM Role for Sputnik appsync logging"
 
@@ -22,6 +27,8 @@ EOF
 }
 
 resource "aws_iam_role" "lambda-role" {
+  provider = aws.useast
+
   name = "restaurant-lambda-role"
 
   assume_role_policy = <<EOF

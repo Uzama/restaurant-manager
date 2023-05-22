@@ -1,19 +1,12 @@
-#foreach($item in $context.args.input.entrySet())
-    #set($item.value=$item.value.replace("'", "''"))
-    #set($item.value=$item.value.replace("\", "\\\\"))
-    #set($item.value=$item.value.replace('"', '\\\"'))
-#end
-#foreach($item in $context.args.entrySet())
-    #set($item.value=$item.value.replace("'", "''"))
-    #set($item.value=$item.value.replace("\", "\\\\"))
-    #set($item.value=$item.value.replace('"', '\\\"'))
-#end
+#set($address=$util.defaultIfNullOrEmpty($ctx.prev.result.address, ''))
+#set($phone=$util.defaultIfNullOrEmpty($ctx.prev.result.phone, ''))
+#set($username=$util.defaultIfNullOrEmpty($ctx.prev.result.username, ''))
 
 {
     "version": "2018-05-29",
     "statements": [
-        "INSERT INTO restaurant.restaurants (username, name, address, phone) VALUES ('$context.args.input.username','$context.args.input.name', '$context.args.input.address', '$context.args.input.phone')",
-        "SELECT username FROM restaurant.menu_items where username = '$context.args.input.username'"
+        "INSERT INTO restaurant.restaurants (username, name, address, phone) VALUES ('$username', '$context.args.input.name', '$address', '$phone')",
+        "SELECT username FROM restaurant.restaurants where username = '$username'"
     ]
 }
 

@@ -21,15 +21,9 @@ type CognitoManagement struct {
 
 func createSession() (*session.Session, error) {
 	
-	// roleARN := os.Getenv("DEBUG_ROLE_ARN")
-	
 	sess, err := session.NewSessionWithOptions(session.Options{
 		Config: aws.Config{Region: aws.String(os.Getenv("AWS_REGION"))},
 	})
-
-	// if roleARN != "" && sess != nil {
-	// 	sess.Config.Credentials = stscreds.NewCredentials(sess, roleARN)
-	// }
 
 	return sess, err
 }

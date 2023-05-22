@@ -40,10 +40,10 @@ module "lambda" {
   cognito_client_id = module.cognito.client_id
   cognito_user_pool_id = module.cognito.user_pool_id
 
-  # providers = {
-  #   aws = aws
-  #   aws.useast = aws.useast
-  # }
+  providers = {
+    aws = aws
+    aws.useast = aws.useast
+  }
 }
 
 module "appsync" {

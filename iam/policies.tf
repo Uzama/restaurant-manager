@@ -29,6 +29,38 @@ resource "aws_iam_policy" "appsync-access-rds" {
             "Resource": [
                 "arn:aws:secretsmanager:us-east-1:*:secret:*"
             ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": "lambda:InvokeFunction",
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+
+}
+
+resource "aws_iam_policy" "appsync-lambda-policy" {
+  name        = "restaurant-appsync-lambda"
+  path        = "/"
+  description = "IAM policy for AppSync to invoke a lambda"
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+       {
+            "Effect": "Allow",
+            "Action": [
+                "cognito-idp:AdminDeleteUser",
+                "cognito-idp:AdminDisableUser",
+                "cognito-idp:AdminGetUser",
+                "cognito-idp:AdminResetUserPassword",
+                "cognito-idp:AdminSetUserPassword",
+                "cognito-idp:SignUp"
+            ],
+           "Resource": "arn:aws:cognito-idp:*:*:*"
         }
     ]
 }
@@ -48,5 +80,5 @@ resource "aws_iam_role_policy_attachment" "appsync-rds-policy-attachment" {
 
 resource "aws_iam_role_policy_attachment" "lambda_policy_attachment" {
   role       = aws_iam_role.lambda-role.name
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+  policy_arn = aws_iam_policy.appsync-lambda-policy.arn
 }

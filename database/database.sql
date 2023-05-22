@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS restaurants (
   username VARCHAR(255) NOT NULL,
   name VARCHAR(255) NOT NULL,
   address VARCHAR(255) NULL,
-  phone VARCHAR(20) NULL,
+  phone VARCHAR(255) NULL,
   PRIMARY KEY (username)
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS orders (
   id VARCHAR(255) NOT NULL,
   restaurant_username VARCHAR(255) NOT NULL,
   customer_name VARCHAR(255) NOT NULL,
-  customer_phone VARCHAR(20) NOT NULL,
+  customer_phone VARCHAR(255) NOT NULL,
   status ENUM('received', 'preparing', 'out_for_delivery', 'delivered') NOT NULL,
   order_date DATETIME NOT NULL,
   PRIMARY KEY (id),

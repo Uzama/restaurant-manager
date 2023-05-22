@@ -3,6 +3,8 @@ provider "aws" {
 }
 
 resource "aws_lambda_function" "cognito-user" {
+  provider = aws.useast
+  
   function_name    = "cognito-user-function"
   role             = var.lambda_role
   handler          = "main"
