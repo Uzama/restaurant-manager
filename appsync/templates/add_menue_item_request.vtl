@@ -9,12 +9,13 @@
     #set($item.value=$item.value.replace('"', '\\\"'))
 #end
 
-#set($process_id=$util.defaultIfNullOrEmpty($ctx.args.input.id,$utils.autoId()))
+#set($process_id=$utils.autoId())
+#set($description=$util.defaultIfNullOrEmpty($ctx.args.input.description, ''))
 
 {
     "version": "2018-05-29",
     "statements": [
-        "INSERT INTO restaurant.menu_items (id, restaurant_username, name, description, price) VALUES ('$process_id','$context.args.input.restaurantUsername', '$context.args.input.name', '$context.args.input.description', '$context.args.input.price')",
+        "INSERT INTO restaurant.menu_items (id, restaurant_username, name, description, price) VALUES ('$process_id','$context.args.input.restaurantUsername', '$context.args.input.name', '$description', '$context.args.input.price')",
         "SELECT id FROM restaurant.menu_items where id = '$process_id'"
     ]
 }
