@@ -8,6 +8,6 @@
     "version": "2018-05-29",
     "statements": [
         "INSERT INTO restaurant.orders (id, restaurant_username, customer_name, customer_phone) VALUES ('$process_id', '$context.args.input.restaurantUsername', '$context.args.input.customerName', '$context.args.input.customerPhone')",
-        "SELECT id, restaurant_username, customer_name, customer_phone, order_status, order_date  FROM restaurant.orders where id = '$process_id'"
+        "SELECT id, restaurant_username, customer_name, customer_phone, order_status, order_date  FROM restaurant.orders WHERE id = '$process_id'"
     ]
 }
