@@ -4,8 +4,11 @@ schema {
 }
 
 type Query {
-    getMenue(restaurantUsername:String!):[MenueItem]
-    listRestaurant:[Restaurant!]
+    getMenue(restaurantUsername:String!): [MenueItem]
+    listRestaurant: [Restaurant!]
+    listOrder: [Order]
+    getOrder(id:String!): Order
+    listInvoice: [Invoice]
 }
 
 type Mutation {
@@ -13,6 +16,12 @@ type Mutation {
     deleteMenueItem(id:String!): String
     createRestaurant(input: CreateRestaurant!): Restaurant
     deleteRestaurant(username:String!): String
+    createOrder(input: CreateOrder!): Order
+    deleteOrder(id:String!): String
+    addOrderItem(input: CreateOrderItem): OrderItem
+    addOrderItem(input: UpdateOrderItem): OrderItem
+    removeOrderItem(input: RemoveOrderItem): String
+    createInvoice(input: CreateInvoice!): Invoice
 }
 
 type MenueItem {
@@ -42,4 +51,61 @@ input CreateRestaurant {
     name: String!
     address: String
     phone: String
+}
+
+type Order {
+    id: ID!
+    restaurantUsername: String!
+    customerName: String!
+    customerPhone: String!
+    status: OrderStatus
+    orderDate: String
+    items: [OrderItem]
+}
+
+input CreateOrder {
+    restaurantUsername: String!
+    customerName: String!
+    customerPhone: String!
+}
+
+enum OrderStatus {
+	received
+	preparing
+	done
+}
+
+type OrderItem {
+    id: ID!
+    orderId: String!
+    menueItemId: String!
+    quantity: Int!
+}
+
+input CreateOrderItem {
+    orderId: String!
+    menueItemId: String!
+    quantity: Int!
+}
+
+input UpdateOrderItem {
+    orderId: String!
+    menueItemId: String!
+    quantity: Int!
+}
+
+input RemoveOrderItem {
+    orderId: String!
+    menueItemId: String!
+}
+
+type Invoice {
+    id: ID!
+    orderId: String!
+    amount: Int!
+    paymentDate: String
+}
+
+input CreateInvoice {
+    orderId: String!
 }

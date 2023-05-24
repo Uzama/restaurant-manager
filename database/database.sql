@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS orders (
   restaurant_username VARCHAR(255) NOT NULL,
   customer_name VARCHAR(255) NOT NULL,
   customer_phone VARCHAR(255) NOT NULL,
-  status ENUM('received', 'preparing', 'out_for_delivery', 'delivered') NOT NULL,
-  order_date DATETIME NOT NULL,
+  order_status ENUM('received', 'preparing', 'done') NOT NULL DEFAULT 'received',
+  order_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   FOREIGN KEY (restaurant_username) REFERENCES restaurants(username)
 );
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS invoices (
   id VARCHAR(255) NOT NULL,
   order_id VARCHAR(255) NOT NULL,
   amount DECIMAL(10,2) NOT NULL,
-  payment_date DATETIME NOT NULL,
+  payment_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id),
   FOREIGN KEY (order_id) REFERENCES orders(id)
 );
