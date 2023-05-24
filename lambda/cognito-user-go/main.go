@@ -73,7 +73,7 @@ func (c *CognitoManagement) AdminDisableUser(evt Input) (error) {
 	
 	disableUserData := &cognitoidentityprovider.AdminDisableUserInput{
 		UserPoolId: aws.String(evt.UserPoolId),
-		Username:   aws.String(evt.Email),
+		Username:   aws.String(evt.Username),
 	}
 
 	_, err := c.cognitoClient.AdminDisableUser(disableUserData)
@@ -85,7 +85,7 @@ func (c *CognitoManagement) AdminDeleteUser(evt Input) (error) {
 	
 	d := &cognitoidentityprovider.AdminDeleteUserInput{
 		UserPoolId: aws.String(evt.UserPoolId),
-		Username:   aws.String(evt.Email),
+		Username:   aws.String(evt.Username),
 	}
 
 	_, err := c.cognitoClient.AdminDeleteUser(d)
@@ -103,14 +103,6 @@ func (c *CognitoManagement) Action(evt Input) (*Response, error) {
 		Address: evt.Address,
 		Phone: evt.Phone,
 	}
-
-	if evt.Email == "" {
-		return nil, errors.New("you must supply an user email address")
-	}
-
-	if !strings.Contains(evt.Email, "@") {
-		return nil, errors.New("incorrect Email")
-	}
 	
 	getUserData := &cognitoidentityprovider.AdminGetUserInput{
 		UserPoolId: aws.String(evt.UserPoolId),
@@ -120,6 +112,14 @@ func (c *CognitoManagement) Action(evt Input) (*Response, error) {
 	switch evt.Action {
 	
 	case "CREATE":
+
+		if evt.Email == "" {
+			return nil, errors.New("you must supply an user email address")
+		}
+	
+		if !strings.Contains(evt.Email, "@") {
+			return nil, errors.New("incorrect Email")
+		}
 		
 		if evt.Password == "" {
 			return nil, errors.New("you must supply password")
@@ -155,30 +155,8 @@ func (c *CognitoManagement) Action(evt Input) (*Response, error) {
 		if evt.Username == "" {
 			return nil, errors.New("you must supply username")
 		}
-
-		listUsersInput := &cognitoidentityprovider.ListUsersInput{
-			UserPoolId:       aws.String(evt.UserPoolId),
-			Filter:           aws.String(fmt.Sprintf("username = \"%s\"", evt.Username)),
-			Limit:            aws.Int64(1),
-		}
-	
-		listUsersOutput, err := c.cognitoClient.ListUsers(listUsersInput)
-		if err != nil {
-			return nil, err
-		}
-	
-		if len(listUsersOutput.Users) != 1 {
-			return nil, fmt.Errorf("User not found or too many users")
-		}
-
-		for _, attribute := range listUsersOutput.Users[0].Attributes {
-
-			if *attribute.Name == "email" {
-				evt.Email = *attribute.Value
-			}
-		}
 		
-		err = c.AdminDisableUser(evt)
+		err := c.AdminDisableUser(evt)
 		if err != nil {
 			return nil, err
 		}

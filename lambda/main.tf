@@ -11,7 +11,7 @@ resource "aws_lambda_function" "cognito-user" {
   runtime          = "go1.x"
   memory_size      = 128
   timeout          = 10
-  filename         = "${path.module}/cognito-user-go/cognito-user.zip"
+  filename         = "${path.module}/cognito-user-go/main.zip"
 
   environment {
     variables = {
