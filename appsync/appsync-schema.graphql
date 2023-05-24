@@ -12,7 +12,7 @@ type Mutation {
     addMenueItem(input: AddMenueItem!): MenueItem
     deleteMenueItem(id:String!): String
     createRestaurant(input: CreateRestaurant!): Restaurant
-    deleteRestaurant(restaurantUsername:String!): String
+    deleteRestaurant(username:String!): String
 }
 
 type MenueItem {

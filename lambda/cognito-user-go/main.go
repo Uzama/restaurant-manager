@@ -73,7 +73,7 @@ func (c *CognitoManagement) AdminDisableUser(evt Input) (error) {
 	
 	disableUserData := &cognitoidentityprovider.AdminDisableUserInput{
 		UserPoolId: aws.String(evt.UserPoolId),
-		Username:   aws.String(evt.Email),
+		Username:   aws.String(evt.Username),
 	}
 
 	_, err := c.cognitoClient.AdminDisableUser(disableUserData)
@@ -85,7 +85,7 @@ func (c *CognitoManagement) AdminDeleteUser(evt Input) (error) {
 	
 	d := &cognitoidentityprovider.AdminDeleteUserInput{
 		UserPoolId: aws.String(evt.UserPoolId),
-		Username:   aws.String(evt.Email),
+		Username:   aws.String(evt.Username),
 	}
 
 	_, err := c.cognitoClient.AdminDeleteUser(d)

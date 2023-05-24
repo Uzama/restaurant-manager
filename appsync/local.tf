@@ -57,3 +57,19 @@ data "local_file" "list_restaurant_request" {
 data "local_file" "list_restaurant_response" {
   filename = "${path.module}/templates/list_restaurant_response.vtl"
 }
+
+data "local_file" "delete_cognito_user_lambda_request" {
+  filename = "${path.module}/templates/delete_cognito_user_lambda_request.vtl"
+}
+
+data "local_file" "delete_cognito_user_lambda_response" {
+  filename = "${path.module}/templates/delete_cognito_user_lambda_response.vtl"
+}
+
+data "local_file" "delete_restaurant_function_request" {
+  filename = "${path.module}/templates/delete_restaurant_function_request.vtl"
+}
+
+data "local_file" "delete_restaurant_function_response" {
+  filename = "${path.module}/templates/delete_restaurant_function_response.vtl"
+}

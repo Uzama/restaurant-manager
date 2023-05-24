@@ -1,0 +1,8 @@
+#set($data = {
+    "action": "DELETE_USER",
+    "username": $ctx.args.input.username
+})
+{
+  "operation": "Invoke",
+  "payload": $util.toJson($data)
+}

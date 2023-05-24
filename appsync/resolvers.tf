@@ -58,3 +58,20 @@ resource "aws_appsync_resolver" "list_restaurant" {
   response_template = data.local_file.list_restaurant_response.content
   type              = "Query"
 }
+
+resource "aws_appsync_resolver" "delete_restaurant" {
+  provider          = aws.useast
+  api_id            = aws_appsync_graphql_api.appsync_api.id
+  kind              = "PIPELINE"
+  field             = "deleteRestaurant"
+  request_template  = data.local_file.pipeline_before_request.content
+  response_template = data.local_file.pipeline_after_request.content
+  type              = "Mutation"
+
+  pipeline_config {
+    functions = [
+      aws_appsync_function.delete_cognito_user_lambda.function_id,
+      aws_appsync_function.delete_restaurant_function.function_id
+    ]
+  }
+}
