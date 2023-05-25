@@ -53,13 +53,12 @@ input CreateRestaurant {
 }
 
 type Order {
-    id: ID!
-    restaurantUsername: String!
-    customerName: String!
-    customerPhone: String!
-    status: OrderStatus
-    orderDate: String
-    items: [OrderItem]
+    id: String!
+    restaurant_username: String!
+    customer_name: String!
+    customer_phone: String!
+    order_status: OrderStatus
+    order_date: String
 }
 
 input CreateOrder {

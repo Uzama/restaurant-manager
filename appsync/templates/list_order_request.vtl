@@ -1,6 +1,17 @@
-{
-    "version": "2018-05-29",
-    "statements": [
-        "SELECT id, restaurant_username, customer_name, customer_phone, order_status, order_date  FROM restaurant.orders"
-    ]
-}
+#if($ctx.args.filter.status)
+    {
+        "version": "2018-05-29",
+        "statements": [
+            "SELECT id, restaurant_username, customer_name, customer_phone, order_status, order_date  FROM restaurant.orders WHERE restaurant_username = '$ctx.args.filter.restaurantUsername' AND order_status = '$ctx.args.filter.status'"
+        ]
+    }
+#else
+    {
+        "version": "2018-05-29",
+        "statements": [
+            "SELECT id, restaurant_username, customer_name, customer_phone, order_status, order_date  FROM restaurant.orders WHERE restaurant_username = '$ctx.args.filter.restaurantUsername'"
+        ]
+    }
+#end
+
+
