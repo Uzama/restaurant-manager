@@ -13,7 +13,7 @@ type Query {
 type Mutation {
     addMenueItem(input: AddMenueItem!): MenueItem
     deleteMenueItem(id:String!): String
-    createRestaurant(input: CreateRestaurant!): Restaurant @aws_api_key
+    createRestaurant(input: CreateRestaurant!): CreateResponse @aws_api_key
     login(input: Login): LoginResponse @aws_api_key
     deleteRestaurant(username:String!): String
     createOrder(input: CreateOrder!): Order
@@ -29,7 +29,7 @@ input Login {
     password: String!
 }
 
-type LoginResponse {
+type LoginResponse @aws_api_key {
     accessToken: String!
     username: String!
 }
@@ -46,6 +46,13 @@ input AddMenueItem {
     name: String!
     description: String
     price: Int!
+}
+
+type CreateResponse @aws_api_key {
+    username: String!
+    name: String!
+    address: String
+    phone: String
 }
 
 type Restaurant {
