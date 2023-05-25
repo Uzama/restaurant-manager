@@ -5,9 +5,8 @@ schema {
 
 type Query {
     getMenue(restaurantUsername:String!): [MenueItem]
-    listRestaurant: [Restaurant!]
-    listOrder: [Order]
-    getOrder(id:String!): Order
+    getRestaurant(id:String!): Restaurant
+    listOrder(input: ListOrder!): [Order]
     listInvoice: [Invoice]
 }
 
@@ -43,6 +42,7 @@ type Restaurant {
     name: String!
     address: String
     phone: String
+    menue: [MenueItem]
 }
 
 input CreateRestaurant {
@@ -67,6 +67,11 @@ input CreateOrder {
     restaurantUsername: String!
     customerName: String!
     customerPhone: String!
+}
+
+input ListOrder {
+    restaurantUsername: String!
+    status: OrderStatus
 }
 
 enum OrderStatus {

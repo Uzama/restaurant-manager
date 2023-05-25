@@ -3,3 +3,4 @@
 *.swp
 .auxplans/
 .terraform.lock.hcl
+.terraform.tfstate
