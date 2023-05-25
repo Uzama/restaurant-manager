@@ -45,6 +45,7 @@ type Response struct {
 	Name        string `json:"name"`
 	Address     string `json:"address"`
 	Phone       string `json:"phone"`
+	AccessToken string `json:"accessToken"`
 }
 
 func (c *CognitoManagement) decodeInput(evt json.RawMessage) (*Input, error) {
@@ -169,6 +170,8 @@ func (c *CognitoManagement) Action(evt Input) (*Response, error) {
 		response.Username = evt.Username
 		
 		return response, err
+
+	
 	}
 	
 	return response, nil
