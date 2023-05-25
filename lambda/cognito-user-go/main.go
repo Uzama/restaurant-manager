@@ -66,6 +66,20 @@ func (c *CognitoManagement) SignUp(evt Input) (string, error) {
 	}
 
 	result, err := c.cognitoClient.SignUp(userSignup)
+	if err != nil {
+		return "", err
+	}
+
+	input := &cognitoidentityprovider.AdminConfirmSignUpInput{
+		UserPoolId: aws.String(evt.UserPoolId),
+		Username:   aws.String(evt.Email),
+	}
+
+	// Call the AdminConfirmSignUp API
+	_, err = c.cognitoClient.AdminConfirmSignUp(input)
+	if err != nil {
+		return "", err
+	}
 
 	return *result.UserSub, err
 }
@@ -171,7 +185,46 @@ func (c *CognitoManagement) Action(evt Input) (*Response, error) {
 		
 		return response, err
 
-	
+	case "LOGIN":
+
+		if evt.Username == "" {
+			return nil, errors.New("you must supply username")
+		}
+
+		if evt.Password == "" {
+			return nil, errors.New("you must supply username")
+		}
+		
+		// Prepare the authentication input
+		authInput := &cognitoidentityprovider.InitiateAuthInput{
+			AuthFlow: aws.String(cognitoidentityprovider.AuthFlowTypeUserPasswordAuth),
+			AuthParameters: map[string]*string{
+				"USERNAME": aws.String(evt.Username),
+				"PASSWORD": aws.String(evt.Password),
+			},
+			ClientId:   aws.String(evt.ClientId),
+		}
+
+		// Initiate the authentication request
+		authResult, err := c.cognitoClient.InitiateAuth(authInput)
+		if err != nil {
+			return nil, err
+		}
+
+		getUserData := &cognitoidentityprovider.AdminGetUserInput{
+			UserPoolId: aws.String(evt.UserPoolId),
+			Username:   aws.String(evt.Username),
+		}
+
+		result, err := c.cognitoClient.AdminGetUser(getUserData)
+		if err != nil {
+			return nil, err
+		}
+
+		response.Username = *result.Username
+		response.AccessToken = *authResult.AuthenticationResult.AccessToken
+		
+		return response, err
 	}
 	
 	return response, nil

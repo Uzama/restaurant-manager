@@ -38,6 +38,14 @@ data "local_file" "create_cognito_user_request" {
   filename = "${path.module}/templates/create_cognito_user_request.vtl"
 }
 
+data "local_file" "login_function_request" {
+  filename = "${path.module}/templates/login_function_request.vtl"
+}
+
+data "local_file" "login_function_response" {
+  filename = "${path.module}/templates/login_function_response.vtl"
+}
+
 data "local_file" "create_cognito_user_response" {
   filename = "${path.module}/templates/create_cognito_user_response.vtl"
 }

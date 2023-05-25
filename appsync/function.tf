@@ -18,6 +18,16 @@ resource "aws_appsync_function" "create_restaurant_function" {
   response_mapping_template = data.local_file.create_restaurant_response.content
 }
 
+resource "aws_appsync_function" "login_function" {
+  provider          = aws.useast
+  api_id            = aws_appsync_graphql_api.appsync_api.id
+  data_source       = aws_appsync_datasource.cognito_user_lambda.name
+  depends_on        = [null_resource.appsync_rds_datasource]
+  name              = "LoginFunction"
+  request_mapping_template  = data.local_file.login_function_request.content
+  response_mapping_template = data.local_file.login_function_response.content
+}
+
 resource "aws_appsync_function" "delete_cognito_user_lambda" {
   provider                  = aws.useast
   api_id                    = aws_appsync_graphql_api.appsync_api.id

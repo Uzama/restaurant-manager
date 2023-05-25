@@ -19,5 +19,9 @@ resource "aws_appsync_graphql_api" "appsync_api" {
     app_id_client_regex      = var.client
   }
 
+   provisioner "local-exec" {
+    command = "aws create-api-key --api-id ${aws_appsync_graphql_api.appsync_api.id} --region ${var.region}"
+  }
+
   schema = data.local_file.appsync_schema.content
 }

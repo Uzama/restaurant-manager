@@ -58,6 +58,7 @@ resource "aws_iam_policy" "appsync-lambda-policy" {
                 "cognito-idp:AdminGetUser",
                 "cognito-idp:AdminResetUserPassword",
                 "cognito-idp:AdminSetUserPassword",
+                "cognito-idp:AdminConfirmSignUp",
                 "cognito-idp:SignUp"
             ],
            "Resource": "arn:aws:cognito-idp:*:*:*"

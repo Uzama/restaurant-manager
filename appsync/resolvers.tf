@@ -48,6 +48,22 @@ resource "aws_appsync_resolver" "create_restaurant" {
   }
 }
 
+resource "aws_appsync_resolver" "login" {
+  provider          = aws.useast
+  api_id            = aws_appsync_graphql_api.appsync_api.id
+  kind              = "PIPELINE"
+  field             = "login"
+  request_template  = data.local_file.pipeline_before_request.content
+  response_template = data.local_file.pipeline_after_request.content
+  type              = "Mutation"
+
+  pipeline_config {
+    functions = [
+      aws_appsync_function.login_function.function_id
+    ]
+  }
+}
+
 resource "aws_appsync_resolver" "get_restaurant" {
   provider          = aws.useast
   api_id            = aws_appsync_graphql_api.appsync_api.id

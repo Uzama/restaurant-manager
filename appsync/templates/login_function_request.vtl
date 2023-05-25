@@ -1,0 +1,9 @@
+#set($data = {
+    "action": "LOGIN",
+    "username": $ctx.args.input.email,
+    "password": $ctx.args.input.password
+})
+{
+  "operation": "Invoke",
+  "payload": $util.toJson($data)
+}
