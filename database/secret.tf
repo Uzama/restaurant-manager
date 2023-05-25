@@ -29,5 +29,6 @@ resource "aws_secretsmanager_secret_version" "restaurant" {
 resource "aws_ssm_parameter" "rds-secret" {
   name  = "/restaurant/secrets/aurora/arn"
   type  = "String"
+  overwrite = true
   value = aws_secretsmanager_secret_version.restaurant.arn
 }

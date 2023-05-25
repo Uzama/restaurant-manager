@@ -5,8 +5,8 @@ schema {
 
 type Query {
     getMenue(restaurantUsername:String!): [MenueItem]
-    getRestaurant(id:String!): Restaurant
-    listOrder(input: ListOrder!): [Order]
+    getRestaurant(id:String!): Restaurant!
+    listOrder(filter:ListOrder!): [Order]
     listInvoice: [Invoice]
 }
 
@@ -18,13 +18,13 @@ type Mutation {
     createOrder(input: CreateOrder!): Order
     deleteOrder(id:String!): String
     addOrderItem(input: CreateOrderItem): OrderItem
-    addOrderItem(input: UpdateOrderItem): OrderItem
+    updateOrderItem(input: UpdateOrderItem): OrderItem
     removeOrderItem(input: RemoveOrderItem): String
     createInvoice(input: CreateInvoice!): Invoice
 }
 
 type MenueItem {
-    id: ID
+    id: String
     name: String!
     description: String
     price: Int!
@@ -42,7 +42,6 @@ type Restaurant {
     name: String!
     address: String
     phone: String
-    menue: [MenueItem]
 }
 
 input CreateRestaurant {

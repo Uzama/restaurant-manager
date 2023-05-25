@@ -1,6 +1,6 @@
 variable "cluster_name" {
   type = string
-  default = "restaurant-manager"
+  default = "restaurant-manager-rds"
 }
 
 variable "database_name" {

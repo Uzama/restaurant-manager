@@ -1,8 +1,6 @@
 {
     "version": "2018-05-29",
     "statements": [
-        "SELECT r.username, r.name, r.address, r.phone, 
-        (SELECT id, name, description, price FROM restaurant.menu_items WHERE restaurant_username = '$ctx.args.id') menue  
-        FROM restaurant.restaurants r, restaurant.menu_items m WHERE r.username = '$ctx.args.id' group by r.username"
+        "SELECT username, name, address, phone FROM restaurant.restaurants WHERE username = '$ctx.args.id'"
     ]
 }
