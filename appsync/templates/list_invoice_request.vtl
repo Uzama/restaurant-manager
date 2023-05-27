@@ -1,0 +1,6 @@
+{
+    "version": "2018-05-29",
+    "statements": [
+        "SELECT id, order_id, amount, payment_date FROM restaurant.invoices WHERE order_id in (SELECT id FROM restaurants.orders WHERE restaurant_username = '$ctx.args.restaurantUsername')"
+    ]
+}

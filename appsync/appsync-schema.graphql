@@ -7,7 +7,7 @@ type Query {
     getMenue(restaurantUsername:String!): [MenueItem]
     getRestaurant(id:String!): Restaurant!
     listOrder(filter:ListOrder!): [Order]
-    listInvoice: [Invoice]
+    listInvoice(restaurantUsername:String!): [Invoice]
 }
 
 type Mutation {

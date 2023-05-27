@@ -168,3 +168,14 @@ resource "aws_appsync_resolver" "create_invoice" {
   response_template = data.local_file.create_invoice_response.content
   type              = "Mutation"
 }
+
+resource "aws_appsync_resolver" "list_invoice" {
+  provider          = aws.useast
+  api_id            = aws_appsync_graphql_api.appsync_api.id
+  data_source       = "AuroraRDS"
+  depends_on        = [null_resource.appsync_rds_datasource]
+  field             = "listInvoice"
+  request_template  = data.local_file.list_invoice_request.content
+  response_template = data.local_file.list_invoice_response.content
+  type              = "Query"
+}

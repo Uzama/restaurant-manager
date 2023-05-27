@@ -137,3 +137,11 @@ data "local_file" "create_invoice_request" {
 data "local_file" "create_invoice_response" {
   filename = "${path.module}/templates/create_invoice_response.vtl"
 }
+
+data "local_file" "list_invoice_request" {
+  filename = "${path.module}/templates/list_invoice_request.vtl"
+}
+
+data "local_file" "list_invoice_response" {
+  filename = "${path.module}/templates/list_invoice_response.vtl"
+}
