@@ -47,6 +47,17 @@ To deploy the Restaurant Manager Serverless Backend using Terraform, follow thes
 
 For more information on using Terraform, please refer to the official Terraform documentation: [https://www.terraform.io/docs/index.html](https://www.terraform.io/docs/index.html).
 
+### Clean up after testing
+
+After you have finished testing or if you no longer need the Restaurant Manager Serverless Backend, it is important to clean up the AWS resources to avoid incurring unnecessary costs. To clean up, follow these steps:
+
+1. Open a terminal or command line.
+2. Navigate to the directory where this repository is cloned.
+3. Run the following command to destroy the infrastructure provisioned by Terraform:
+
+   ```bash
+   terraform destroy
+
 If you encounter any issues or have any questions, please open an issue in this repository.
 
 Happy coding.
