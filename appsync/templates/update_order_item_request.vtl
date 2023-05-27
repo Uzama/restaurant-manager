@@ -1,0 +1,20 @@
+#foreach($item in $context.args.input.entrySet())
+    #set($item.value=$item.value.replace("'", "''"))
+    #set($item.value=$item.value.replace("\", "\\\\"))
+    #set($item.value=$item.value.replace('"', '\\\"'))
+#end
+#foreach($item in $context.args.entrySet())
+    #set($item.value=$item.value.replace("'", "''"))
+    #set($item.value=$item.value.replace("\", "\\\\"))
+    #set($item.value=$item.value.replace('"', '\\\"'))
+#end
+
+#set($process_id=$utils.autoId())
+
+{
+    "version": "2018-05-29",
+    "statements": [
+        "UPDATE restaurant.order_items SET quantity = '$context.args.input.quantity' WHERE order_id = '$context.args.input.orderId' AND menu_item_id = '$context.args.input.menueItemId')",
+        "SELECT id, order_id, menu_item_id, quantity FROM restaurant.order_items WHERE id = '$process_id'"
+    ]
+}
