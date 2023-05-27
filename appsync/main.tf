@@ -19,6 +19,12 @@ resource "aws_appsync_graphql_api" "appsync_api" {
     app_id_client_regex      = var.client
   }
 
+  provisioner "local-exec" {
+    command = <<EOT
+      aws ssm put-parameter --name "/${var.appsync_name}/appsync/graphql/cognito/id" --type "String" --value "${aws_appsync_graphql_api.appsync_api.id}" --region "${var.region}"
+    EOT
+  }
+
   schema = data.local_file.appsync_schema.content
 }
 
@@ -26,25 +32,10 @@ resource "aws_appsync_api_key" "cognito_api_key" {
   provider    = aws.useast
   api_id      = aws_appsync_graphql_api.appsync_api.id
   expires     = timeadd(timestamp(), "8700h")
-}
 
-resource "aws_ssm_parameter" "graphql_cognito_endpoint" {
-  count     = var.auth_type == "AMAZON_COGNITO_USER_POOLS" ? 1 : 0
-  name      = "/restaurant-manager/appsync/graphql/cognito/endpoint"
-  type      = "String"
-  value     = aws_appsync_graphql_api.appsync_api.uris["GRAPHQL"]
-  overwrite = true
-}
-
-resource "aws_ssm_parameter" "graphql_cognito_api_id" {
-  name      = "/restaurant-manager/appsync/graphql/cognito/id"
-  type      = "String"
-  value     = aws_appsync_graphql_api.appsync_api.id
-  overwrite = true
-}
-
-resource "aws_ssm_parameter" "graphql_cognito_api_key" {
-  name  = "/restaurant-manager/appsync/graphql/cognito/apikey"
-  type  = "String"
-  value = aws_appsync_api_key.cognito_api_key.key
+  provisioner "local-exec" {
+    command = <<EOT
+      aws ssm put-parameter --name "/${var.appsync_name}/appsync/graphql/cognito/apikey" --type "String" --value "${aws_appsync_api_key.cognito_api_key.key}" --region "${var.region}"
+    EOT
+  }
 }

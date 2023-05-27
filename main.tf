@@ -49,7 +49,6 @@ module "lambda" {
 module "appsync" {
   source = "./appsync"
 
-  appsync_name           = "Cognito"
   region                 = "us-east-1"
   rds_database_region    = "us-east-1"
   auth_type              = "AMAZON_COGNITO_USER_POOLS"
@@ -66,4 +65,10 @@ module "appsync" {
     aws = aws
     aws.useast = aws.useast
   }
+}
+
+resource "aws_ssm_parameter" "appsync" {
+  name  = "/restaurant-manager/appsync/graphql/cognito/endpoint"
+  type  = "String"
+  value = module.appsync.appsync_endpoint
 }
