@@ -38,9 +38,9 @@ To deploy the Restaurant Manager Serverless Backend using Terraform, follow thes
 1. Clone this repository to your local machine.
 2. Navigate to the repository directory.
 3. Open the command line or terminal.
-4. Run `terraform init` to initialize Terraform and download the necessary providers.
-5. Run `terraform plan` to preview the resources that will be created.
-6. Run `terraform apply` to deploy the infrastructure.
+4. Run ```terraform init``` to initialize Terraform and download the necessary providers.
+5. Run ```terraform plan``` to preview the resources that will be created.
+6. Run ```terraform apply``` to deploy the infrastructure.
 7. Confirm the deployment by typing "yes" when prompted.
 8. Terraform will provision the resources defined in the configuration.
 
@@ -48,4 +48,4 @@ For more information on using Terraform, please refer to the official Terraform 
 
 If you encounter any issues or have any questions, please open an issue in this repository.
 
-Happy coding!
+Happy coding.
