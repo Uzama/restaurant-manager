@@ -1,0 +1,20 @@
+#foreach($item in $context.args.input.entrySet())
+    #set($item.value=$item.value.replace("'", "''"))
+    #set($item.value=$item.value.replace("\", "\\\\"))
+    #set($item.value=$item.value.replace('"', '\\\"'))
+#end
+#foreach($item in $context.args.entrySet())
+    #set($item.value=$item.value.replace("'", "''"))
+    #set($item.value=$item.value.replace("\", "\\\\"))
+    #set($item.value=$item.value.replace('"', '\\\"'))
+#end
+
+#set($process_id=$utils.autoId())
+
+{
+    "version": "2018-05-29",
+    "statements": [
+        "INSERT INTO restaurant.invoices (id, order_id, amount) VALUES ('$process_id','$context.args.input.orderId', SELECT SUM(oi.quantity * mi.price) FROM restaurant.order_items oi INNER JOIN restaurant.menue_items mi WHERE oi.menu_item_id = mi.id AND oi.order_id = '$context.args.input.orderId')",
+        "SELECT id, order_id, amount, payment_date FROM restaurant.invoices WHERE id = '$process_id'"
+    ]
+}

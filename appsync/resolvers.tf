@@ -157,3 +157,14 @@ resource "aws_appsync_resolver" "remove_order_item" {
   response_template = data.local_file.remove_order_item_response.content
   type              = "Mutation"
 }
+
+resource "aws_appsync_resolver" "create_invoice" {
+  provider          = aws.useast
+  api_id            = aws_appsync_graphql_api.appsync_api.id
+  data_source       = "AuroraRDS"
+  depends_on        = [null_resource.appsync_rds_datasource]
+  field             = "createInvoice"
+  request_template  = data.local_file.create_invoice_request.content
+  response_template = data.local_file.create_invoice_response.content
+  type              = "Mutation"
+}
