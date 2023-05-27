@@ -122,9 +122,9 @@ input RemoveOrderItem {
 
 type Invoice {
     id: ID!
-    orderId: String!
+    order_id: String!
     amount: Int!
-    paymentDate: String
+    payment_date: String
 }
 
 input CreateInvoice {
