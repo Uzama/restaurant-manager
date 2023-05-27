@@ -124,3 +124,14 @@ resource "aws_appsync_resolver" "delete_order" {
   response_template = data.local_file.delete_order_response.content
   type              = "Mutation"
 }
+
+resource "aws_appsync_resolver" "add_order_item" {
+  provider          = aws.useast
+  api_id            = aws_appsync_graphql_api.appsync_api.id
+  data_source       = "AuroraRDS"
+  depends_on        = [null_resource.appsync_rds_datasource]
+  field             = "addOrderItem"
+  request_template  = data.local_file.add_order_item_request.content
+  response_template = data.local_file.add_order_item_response.content
+  type              = "Mutation"
+}

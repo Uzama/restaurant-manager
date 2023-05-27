@@ -105,3 +105,11 @@ data "local_file" "delete_order_request" {
 data "local_file" "delete_order_response" {
   filename = "${path.module}/templates/delete_order_response.vtl"
 }
+
+data "local_file" "add_order_item_request" {
+  filename = "${path.module}/templates/add_order_item_request.vtl"
+}
+
+data "local_file" "add_order_item_response" {
+  filename = "${path.module}/templates/add_order_item_response.vtl"
+}

@@ -98,8 +98,8 @@ enum OrderStatus {
 
 type OrderItem {
     id: ID!
-    orderId: String!
-    menueItemId: String!
+    order_id: String!
+    menue_item_id: String!
     quantity: Int!
 }
 
