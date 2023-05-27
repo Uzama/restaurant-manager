@@ -21,7 +21,8 @@ resource "aws_appsync_graphql_api" "appsync_api" {
 
   provisioner "local-exec" {
     command = <<EOT
-      aws ssm put-parameter --name "/${var.appsync_name}/appsync/graphql/cognito/id" --type "String" --value "${aws_appsync_graphql_api.appsync_api.id}" --region "${var.region}"
+      aws ssm put-parameter --overwrite --name /${var.appsync_name}/appsync/graphql/cognito/id --type String --value ${aws_appsync_graphql_api.appsync_api.id} --region ${var.region}
+      aws ssm put-parameter --overwrite --name /${var.appsync_name}/appsync/graphql/cognito/endpoint --type String --value ${aws_appsync_graphql_api.appsync_api.uris["GRAPHQL"]} --region ${var.region}
     EOT
   }
 
@@ -35,7 +36,7 @@ resource "aws_appsync_api_key" "cognito_api_key" {
 
   provisioner "local-exec" {
     command = <<EOT
-      aws ssm put-parameter --name "/${var.appsync_name}/appsync/graphql/cognito/apikey" --type "String" --value "${aws_appsync_api_key.cognito_api_key.key}" --region "${var.region}"
+      aws ssm put-parameter --overwrite --name /${var.appsync_name}/appsync/graphql/cognito/apikey --type String --value ${aws_appsync_api_key.cognito_api_key.key} --region ${var.region}
     EOT
   }
 }

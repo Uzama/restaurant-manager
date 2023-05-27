@@ -66,9 +66,3 @@ module "appsync" {
     aws.useast = aws.useast
   }
 }
-
-resource "aws_ssm_parameter" "appsync" {
-  name  = "/restaurant-manager/appsync/graphql/cognito/endpoint"
-  type  = "String"
-  value = module.appsync.appsync_endpoint
-}
