@@ -22,6 +22,7 @@ To set up your AWS Access Key ID and Secret Access Key, follow these steps:
 5. Choose the "Security credentials" tab.
 6. Under "Access keys", choose "Create access key".
 7. Note down the "Access key ID" and "Secret access key" or download the CSV file containing the credentials.
+8. Set those in your local configuration.
 
 ### Installing Terraform
 
