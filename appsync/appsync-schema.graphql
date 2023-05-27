@@ -7,6 +7,7 @@ type Query {
     getMenue(restaurantUsername:String!): [MenueItem]
     getRestaurant(id:String!): Restaurant!
     listOrder(filter:ListOrder!): [Order]
+    listOrderItems(orderId:String!):[OrderItem]
     listInvoice(restaurantUsername:String!): [Invoice]
 }
 
@@ -101,6 +102,8 @@ type OrderItem {
     order_id: String!
     menue_item_id: String!
     quantity: Int!
+    name: String
+    price: Int
 }
 
 input CreateOrderItem {

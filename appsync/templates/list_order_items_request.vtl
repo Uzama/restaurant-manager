@@ -1,0 +1,6 @@
+{
+    "version": "2018-05-29",
+    "statements": [
+        "SELECT id, order_id, menu_item_id, quantity, mi.name as name, mi.price as price FROM restaurant.order_items oi RIGHT JOIN restaurant.menue_items mi on oi.menu_item_id = mi.id  WHERE order_id = 'ctx.args.orderId'"
+    ]
+}

@@ -14,7 +14,7 @@
 {
     "version": "2018-05-29",
     "statements": [
-        "INSERT INTO restaurant.invoices (id, order_id, amount) VALUES ('$process_id','$context.args.input.orderId', SELECT SUM(oi.quantity * mi.price) FROM restaurant.order_items oi INNER JOIN restaurant.menue_items mi WHERE oi.menu_item_id = mi.id AND oi.order_id = '$context.args.input.orderId')",
+        "INSERT INTO restaurant.invoices (id, order_id, amount) VALUES ('$process_id','$context.args.input.orderId', SELECT SUM(oi.quantity * mi.price) FROM restaurant.order_items oi INNER JOIN restaurant.menue_items mi on oi.menu_item_id = mi.id WHERE oi.order_id = '$context.args.input.orderId')",
         "SELECT id, order_id, amount, payment_date FROM restaurant.invoices WHERE id = '$process_id'"
     ]
 }
