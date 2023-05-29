@@ -1,0 +1,114 @@
+.orderItemContainer {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    border: 0.5px solid black;
+    margin-bottom: 20px;
+}
+
+.orderContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.expandButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.orderDetailsContainer {
+    width: 85%;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.deleteOrderContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+}
+
+.deleteIcon {
+    size: 10em;
+    font-weight: bold;
+    color: red;
+}
+
+.orderDetails {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.itemListContainer {
+    align-items: center;
+    margin: 0px 20px;
+    padding: 5px 20px;
+    border: 0.5px solid black;
+}
+
+.itemListHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid black;
+}
+
+.itemListContainer button {
+    width: 150px;
+    height: 40px;
+}
+
+.itemListBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.menueItemListForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.selectionField {
+    margin: 20px;
+    height: 40px;
+}
+
+.BiBookAdd {
+    margin-top: 20px;
+}
+
+.itemListBodyItem {
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    border: 0.5px solid black;
+}
+
+.itemListBodyDetails {
+    width: 80%;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.itemListBodydelete {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

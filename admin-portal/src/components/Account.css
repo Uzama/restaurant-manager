@@ -1,0 +1,46 @@
+.Account {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.details {
+    width: 70%;
+    border: 0.5px solid black;
+    padding: 40px;
+}
+
+.accountInformationContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #e5e5e5;
+    border: 3px solid rgb(36, 124, 225);
+}
+
+.username {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 1.0rem;
+    color: #989797;
+    margin-bottom: 20px;
+}
+
+.information {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 1.2rem;
+}
+
+.error {
+    color: red;
+}

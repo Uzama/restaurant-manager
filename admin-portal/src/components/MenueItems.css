@@ -1,0 +1,115 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 25px;
+}
+
+.loadingContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-self: center;
+    align-items: center;
+    width: 50%;
+    text-align: center;
+    border: 0.5px solid black;
+    padding: 40px;
+}
+
+.Overlay {
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.textfield {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 0.5px solid black;
+    padding: 10px;
+    width: 94%;
+}
+
+.Login label {
+    text-align: left;
+    color: #040303;
+    font-weight: 500;
+}
+
+hr {
+    width: 70%;
+    margin-bottom: 40px;
+}
+
+.button {
+    width: 250px;
+    height: 50px;
+    padding: 5px;
+}
+
+.menueBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50vh;
+}
+
+.listItem {
+    width: 700px;
+    height: 100px;
+    border: 0.5px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.logoContainer {
+    width: 15%;
+    justify-self: center;
+    margin-right: 10px;
+    border-right: 0.5px solid black;
+    padding-right: 10px;
+}
+
+.logo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: #e5e5e5;
+    border: 0.5px solid black;
+    margin: 0;
+}
+
+.information {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.information p {
+    margin: 0;
+}
+
+.deleteContainer {
+    width: 15%;
+    align-items: flex-end;
+}
+
+.deleteContainer button {
+    background-color: red;
+    color: #e5e5e5;
+}

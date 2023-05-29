@@ -1,0 +1,70 @@
+.Login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.Login h1 {
+    text-align: center;
+}
+
+.login-form-box {
+    width: 25%;
+    border: 0.5px solid black;
+    padding: 20px;
+}
+
+.form {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.Login-form h1 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 2.0rem;
+    color: rgb(1, 1, 1);
+    margin-bottom: 20px;
+}
+
+.textfield {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 0.5px solid black;
+    padding: 10px;
+    width: 94%;
+}
+
+.Login label {
+    text-align: left;
+    color: #040303;
+    font-weight: 500;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    color: whitesmoke;
+    background-color: rgb(36, 124, 225);
+    height: 40px;
+    border: 1px solid rgb(84, 84, 84);
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.newMerchantbox {
+    text-align: left;
+    padding-top: 30px;
+}
+
+#create-acc {
+    color: rgb(2, 91, 192);
+    text-align: left;
+}
+
+.error {
+    color: red;
+}
