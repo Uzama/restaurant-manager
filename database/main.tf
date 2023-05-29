@@ -10,7 +10,6 @@ resource "aws_rds_cluster" "cluster" {
   engine                  = "aurora-mysql"
   engine_version          = "5.7.mysql_aurora.2.07.1"
   database_name           = var.database_name
-  db_subnet_group_name    = var.db_subnet_group_name
   master_username         = var.username
   master_password         = var.password
   skip_final_snapshot     = true

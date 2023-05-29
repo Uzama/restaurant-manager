@@ -60,4 +60,17 @@ After you have finished testing or if you no longer need the Restaurant Manager 
 
 If you encounter any issues or have any questions, please open an issue in this repository.
 
+### Running frontend application
+
+1. To test, navigate into `/admin-portal` directory
+2. Set `.env` in `/admin-portal` directory.
+
+```bash
+REACT_APP_AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXXX"
+REACT_APP_AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXXX"
+```
+
+3. Type the following commands `npm install && npm run`.
+4. the server will start at localhost:3000.
+
 Happy coding.
