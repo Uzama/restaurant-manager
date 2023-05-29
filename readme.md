@@ -66,8 +66,8 @@ If you encounter any issues or have any questions, please open an issue in this 
 2. Set `.env` in `/admin-portal` directory.
 
 ```bash
-REACT_APP_AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXXX"
-REACT_APP_AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXXX"
+REACT_APP_AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXXX" // aws access key id
+REACT_APP_AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXXX" // aws secret access key
 ```
 
 3. Type the following commands `npm install && npm run`.
