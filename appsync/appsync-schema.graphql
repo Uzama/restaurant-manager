@@ -100,7 +100,7 @@ enum OrderStatus {
 type OrderItem {
     id: ID!
     order_id: String!
-    menue_item_id: String!
+    menu_item_id: String!
     quantity: Int!
     name: String
     price: Int
